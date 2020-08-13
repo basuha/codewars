@@ -28,7 +28,7 @@ public class AreSameTest {
 
     @Test
     public void test4() {
-        int[] a = null;
+        int[] a = new int[0];
         int[] b = new int[8];
         assertEquals(false, AreSame.comp(a, b));
     }

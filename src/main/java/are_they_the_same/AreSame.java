@@ -1,6 +1,8 @@
 package are_they_the_same;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 //https://www.codewars.com/kata/550498447451fbbd7600041c/train/java
 /*
@@ -38,17 +40,34 @@ public class AreSame {
     public static boolean comp(int[] a, int[] b) {
         System.out.println(Arrays.toString(a));
         System.out.println(Arrays.toString(b));
-        if (a == null || b.length == 0 || a.length == 0)
+        if (a == null && b == null)
+            return true;
+
+        if (a == null)
+            if (b.length == 0)
+                return false;
+
+        if (b == null)
+            if (a.length == 0)
+                return false;
+
+        if (a.length == 0 && b.length == 0)
+            return true;
+        if (a.length == 0 || b.length == 0)
             return false;
-        for (int i = 0; i < b.length; i++)
-            for (int j = 0; j < a.length; j++) {
-                System.out.println("b = " + b[i]);
-                System.out.println("a = " + (a[j] * a[j]) + "(" + a[j] + ")");
-                if (a[j] * a[j] == b[i]) {
+
+        List<Integer> aa = Arrays.stream(a).boxed().collect(Collectors.toList());
+        List<Integer> bb = Arrays.stream(b).boxed().collect(Collectors.toList());
+        for (int B : bb)
+            for (int i = 0; i < aa.size(); i++) {
+                System.out.println("b = " + B);
+                System.out.println("a = " + (a[i] * a[i]) + "(" + B + ")");
+                if (a[i] * a[i] == B) {
                     System.err.println(true);
+                    bb.remove(B);
                     break;
                 } else {
-                    if (j == a.length - 1) {
+                    if (i == aa.size() - 1) {
                         return false;
                     }
                 }
