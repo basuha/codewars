@@ -34,9 +34,8 @@ public class HtmlColorParser {
     public HtmlColorParser(Map<String,String> map) {
         this.map = map;
     }
-
-
 //sdadasdasd
+    
 
     public RGB parse(String color) {
         Color c = Color.BLACK;
