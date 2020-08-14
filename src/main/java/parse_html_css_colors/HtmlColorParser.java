@@ -35,6 +35,8 @@ public class HtmlColorParser {
         this.map = map;
     }
 
+
+
     public RGB parse(String color) {
         Color c = Color.BLACK;
         if (color.matches("#.{3,6}")) {
